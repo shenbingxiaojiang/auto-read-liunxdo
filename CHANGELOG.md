@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.0](https://www.github.com/14790897/auto-read-liunxdo/compare/v1.0.0...v1.1.0) (2024-04-06)
+
+
+### Features
+
+* docker 定时运行 ([963a2ed](https://www.github.com/14790897/auto-read-liunxdo/commit/963a2edf466cf113908493e1144f23c1ea9c95c6))
+* docker输出日志 ([a0a13e6](https://www.github.com/14790897/auto-read-liunxdo/commit/a0a13e6f09d6226f3811cb82425852f4283f48f5))
+
 ## 1.0.0 (2024-04-05)
 
 
