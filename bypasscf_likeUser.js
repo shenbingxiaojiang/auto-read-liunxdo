@@ -234,7 +234,7 @@ async function launchBrowserForUser(username, password) {
     //真正执行阅读脚本
     const externalScriptPath = path.join(
       dirname(fileURLToPath(import.meta.url)),
-      "index.js"
+      "index_likeUser.js"
     );
     const externalScript = fs.readFileSync(externalScriptPath, "utf8");
 
