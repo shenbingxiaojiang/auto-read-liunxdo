@@ -1,7 +1,7 @@
 services:
-  autoread:
-    image: 14790897/auto-read:latest
-    container_name: auto-read
+  autolikeuser:
+    image: 14790897/auto-like-user:latest
+    container_name: auto-like-user
     env_file:
       - ./.env
       - ./.env.local

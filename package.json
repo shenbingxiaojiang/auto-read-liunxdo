@@ -2,11 +2,12 @@
   "type": "module",
   "dependencies": {
     "dotenv": "^16.4.5",
+    "express": "^4.21.1",
     "node-telegram-bot-api": "^0.66.0",
     "puppeteer": "^22.15.0",
     "puppeteer-extra": "^3.3.6",
     "puppeteer-extra-plugin-stealth": "^2.11.2",
     "puppeteer-real-browser": "^1.2.31"
   },
-  "version": "1.4.0"
+  "version": "1.6.0"
 }

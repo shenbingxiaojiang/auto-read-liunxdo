@@ -1,4 +1,4 @@
-name: bypassCF likeUser (点赞特定用户使用这个)
+name: likeUser (点赞特定用户)
 # GitHub.secrets优先级最高，即使没有设置对应的变量，它也会读取，这时变量为空值，导致报错，.env读取的变量无法覆盖这个值,使用了${PASSWORD_ESCAPED//\#/\\#}来对#转义,需要两个\，但是我直接在env文件使用这种方法是不行的，GitHub action是有效
 on:
   schedule:
@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 20 # 设置作业超时时间为20分钟
+    timeout-minutes: 35 # 设置作业超时时间为20分钟
 
     strategy:
       matrix:
@@ -21,6 +21,7 @@ jobs:
       RUN_TIME_LIMIT_MINUTES: ${{secrets.RUN_TIME_LIMIT_MINUTES}}
       TELEGRAM_BOT_TOKEN: ${{secrets.TELEGRAM_BOT_TOKEN}}
       TELEGRAM_CHAT_ID: ${{secrets.TELEGRAM_CHAT_ID}}
+      SPECIFIC_USER: ${{secrets.SPECIFIC_USER}}
     steps:
       - uses: actions/checkout@v3 # 检出仓库
 

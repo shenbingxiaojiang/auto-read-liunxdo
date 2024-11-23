@@ -10,10 +10,10 @@ import TelegramBot from "node-telegram-bot-api";
 dotenv.config();
 
 // 截图保存的文件夹
-const screenshotDir = "screenshots";
-if (!fs.existsSync(screenshotDir)) {
-  fs.mkdirSync(screenshotDir);
-}
+// const screenshotDir = "screenshots";
+// if (!fs.existsSync(screenshotDir)) {
+//   fs.mkdirSync(screenshotDir);
+// }
 puppeteer.use(StealthPlugin());
 
 // Load the default .env file
@@ -30,7 +30,7 @@ if (fs.existsSync(".env.local")) {
 }
 
 // 读取以分钟为单位的运行时间限制
-const runTimeLimitMinutes = process.env.RUN_TIME_LIMIT_MINUTES || 15;
+const runTimeLimitMinutes = process.env.RUN_TIME_LIMIT_MINUTES || 20;
 
 // 将分钟转换为毫秒
 const runTimeLimitMillis = runTimeLimitMinutes * 60 * 1000;
@@ -91,7 +91,7 @@ function delayClick(time) {
     // 并发启动浏览器实例进行登录
     const loginTasks = usernames.map((username, index) => {
       const password = passwords[index];
-      const delay = index * delayBetweenInstances;
+      const delay = (index % maxConcurrentAccounts) * delayBetweenInstances; // 使得每一组内的浏览器可以分开启动
       return () => {
         // 确保这里返回的是函数
         return new Promise((resolve, reject) => {
@@ -113,7 +113,7 @@ function delayClick(time) {
           const { browser } = await task(); // 运行任务并获取浏览器实例
           return browser;
         }); // 等待当前批次的任务完成
-      const browsers = await Promise.all(batch);
+      const browsers = await Promise.all(batch); // Task里面的任务本身是没有进行await的, 所以会继续执行下面的代码
 
       // 如果还有下一个批次，等待指定的时间,同时，如果总共只有一个账号，也需要继续运行
       if (i + maxConcurrentAccounts < totalAccounts || i === 0) {
@@ -255,7 +255,7 @@ async function launchBrowserForUser(username, password) {
     page.on("load", async () => {
       // await page.evaluate(externalScript); //因为这个是在页面加载好之后执行的,而脚本是在页面加载好时刻来判断是否要执行，由于已经加载好了，脚本就不会起作用
     });
-    // 如果是Linuxdo，就导航到我的帖子，但我感觉这里写没什么用，因为外部脚本已经定义好了
+    // 如果是Linuxdo，就导航到我的帖子，但我感觉这里写没什么用，因为外部脚本已经定义好了，不对，这里不会点击按钮，所以不会跳转，需要手动跳转
     if (loginUrl == "https://linux.do") {
       await page.goto("https://linux.do/t/topic/13716/400", {
         waitUntil: "domcontentloaded",
@@ -268,6 +268,9 @@ async function launchBrowserForUser(username, password) {
       await page.goto(`${loginUrl}/t/topic/1`, {
         waitUntil: "domcontentloaded",
       });
+    }
+    if (token && chatId) {
+      sendToTelegram(`${username} 登录成功`);
     }
     return { browser };
   } catch (err) {
@@ -346,7 +349,7 @@ async function login(page, username, password) {
     ]); //注意如果登录失败，这里会一直等待跳转，导致脚本执行失败 这点四个月之前你就发现了结果今天又遇到（有个用户遇到了https://linux.do/t/topic/169209/82），但是你没有在这个报错你提示我8.5
   } catch (error) {
     throw new Error(
-      `Navigation timed out in login.请检查用户名密码是否正确(注意密码中是否有特殊字符,需要外面加上双引号指明这是字符串，如果密码里面有双引号则需要转义), 此外GitHub action似乎不能识别特殊字符，不能登录的话建议改密码,失败用户 ${username}, 密码 $错误信息：,
+      `Navigation timed out in login.请检查用户名密码是否正确(注意密码中是否有特殊字符,需要外面加上双引号指明这是字符串，如果密码里面有双引号则需要转义)(注意GitHub action不需要增加处理,也不需要加引号),失败用户 ${username}, 密码 $错误信息：,
       ${error}`
     ); //{password}
   }
@@ -403,3 +406,93 @@ async function takeScreenshots(page) {
     }
   });
 }
+import express from "express";
+
+const healthApp = express();
+const HEALTH_PORT = process.env.HEALTH_PORT || 7860;
+
+// 健康探针路由
+healthApp.get("/health", (req, res) => {
+  const memoryUsage = process.memoryUsage();
+
+  // 将字节转换为MB
+  const memoryUsageMB = {
+    rss: `${(memoryUsage.rss / (1024 * 1024)).toFixed(2)} MB`, // 转换为MB并保留两位小数
+    heapTotal: `${(memoryUsage.heapTotal / (1024 * 1024)).toFixed(2)} MB`,
+    heapUsed: `${(memoryUsage.heapUsed / (1024 * 1024)).toFixed(2)} MB`,
+    external: `${(memoryUsage.external / (1024 * 1024)).toFixed(2)} MB`,
+    arrayBuffers: `${(memoryUsage.arrayBuffers / (1024 * 1024)).toFixed(2)} MB`,
+  };
+
+  const healthData = {
+    status: "OK",
+    timestamp: new Date().toISOString(),
+    memoryUsage: memoryUsageMB,
+    uptime: process.uptime().toFixed(2), // 保留两位小数
+  };
+
+  res.status(200).json(healthData);
+});
+healthApp.get("/", (req, res) => {
+  res.send(`
+    <html>
+      <head>
+        <title>Auto Read</title>
+        <style>
+          body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+          }
+          .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            text-align: center;
+          }
+          h1 {
+            color: #007bff;
+          }
+          p {
+            font-size: 18px;
+            margin: 15px 0;
+          }
+          a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+          }
+          a:hover {
+            text-decoration: underline;
+          }
+          footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #555;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <h1>Welcome to the Auto Read App</h1>
+          <p>You can check the server's health at <a href="/health">/health</a>.</p>
+          <p>GitHub: <a href="https://github.com/14790897/auto-read-liunxdo" target="_blank">https://github.com/14790897/auto-read-liunxdo</a></p>
+          <footer>&copy; 2024 Auto Read App</footer>
+        </div>
+      </body>
+    </html>
+  `);
+});
+healthApp.listen(HEALTH_PORT, () => {
+  console.log(
+    `Health check endpoint is running at http://localhost:${HEALTH_PORT}/health`
+  );
+});
