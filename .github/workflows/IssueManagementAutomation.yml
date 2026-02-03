@@ -7,6 +7,9 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - '.github/workflows/cron_*.yaml'
+      - '.github/workflows/cron_*.yml'
   issues:
     types: [opened]
 
@@ -16,6 +19,7 @@ permissions:
 
 jobs:
   manage-issues:
+    if: github.repository == '14790897/auto-read-liunxdo'
     runs-on: ubuntu-latest
     steps:
       - name: auto lock baipiao

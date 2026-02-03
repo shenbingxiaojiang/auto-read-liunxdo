@@ -4,9 +4,13 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - '.github/workflows/cron_*.yaml'
+      - '.github/workflows/cron_*.yml'
 
 jobs:
   build-and-push:
+    if: github.repository == '14790897/auto-read-liunxdo'
     runs-on: ubuntu-latest
 
     steps:

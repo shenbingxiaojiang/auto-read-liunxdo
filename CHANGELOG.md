@@ -1,5 +1,197 @@
 # Changelog
 
+## [1.15.0](https://www.github.com/14790897/auto-read-liunxdo/compare/v1.14.4...v1.15.0) (2026-01-21)
+
+
+### Features
+
+* add new script for user login automation and health check endpoint ([c10b990](https://www.github.com/14790897/auto-read-liunxdo/commit/c10b990a3494255c5e53585c403da65df49ccfc3))
+* add root certificate files for PostgreSQL and MongoDB ([5584234](https://www.github.com/14790897/auto-read-liunxdo/commit/5584234d80c66c8c2615392b0b12866bad710837))
+* enhance environment variable handling for RSS and topic data fetch features ([4c446fd](https://www.github.com/14790897/auto-read-liunxdo/commit/4c446fdaa5ceb76abd244bbb57cb2f7d8f89be28))
+
+
+### Bug Fixes
+
+* add repository condition to workflow jobs for consistency ([bc2c5ba](https://www.github.com/14790897/auto-read-liunxdo/commit/bc2c5ba1efe076d5d55f233f42df4067cca100f6))
+* ensure environment variables for RSS and topic data fetch features are set to empty string if not defined ([7759c6a](https://www.github.com/14790897/auto-read-liunxdo/commit/7759c6aef670957f7eb76a4feefd24eaf93feeec))
+* increase connection timeout to 15 seconds for better handling of cross-region network latency ([1e914c5](https://www.github.com/14790897/auto-read-liunxdo/commit/1e914c5264c95642453fb5a40e34ec9af8c6d735))
+* update primary database query to use CockroachDB instead of Aiven PostgreSQL ([2d4419b](https://www.github.com/14790897/auto-read-liunxdo/commit/2d4419b6cd7792bbcc15eb01714788bf21d12427))
+* update RSS and topic data fetch environment variable handling for clarity ([3ae4ca6](https://www.github.com/14790897/auto-read-liunxdo/commit/3ae4ca66b16095d0e40d5a6ed541fc12990b5707))
+
+### [1.14.4](https://www.github.com/14790897/auto-read-liunxdo/compare/v1.14.3...v1.14.4) (2025-11-03)
+
+
+### Bug Fixes
+
+* rm hg ([0cd3ab6](https://www.github.com/14790897/auto-read-liunxdo/commit/0cd3ab642fe9cfca109a1732e4ec1e55b3412b63))
+
+### [1.14.3](https://www.github.com/14790897/auto-read-liunxdo/compare/v1.14.2...v1.14.3) (2025-10-26)
+
+
+### Bug Fixes
+
+* ignore cron push ([fbdb7dd](https://www.github.com/14790897/auto-read-liunxdo/commit/fbdb7ddb052c75c7be57c169e6e7f0af3cc82d01))
+
+### [1.14.2](https://www.github.com/14790897/auto-read-liunxdo/compare/v1.14.1...v1.14.2) (2025-09-26)
+
+
+### Bug Fixes
+
+* // [@exclude](https://www.github.com/exclude)      https://linux.do/a/9611/0 ([150d94a](https://www.github.com/14790897/auto-read-liunxdo/commit/150d94a49d6f47468ec95838ee6f70a17eb0d13b))
+* TargetCloseError: Protocol error (Page.addScriptToEvaluateOnNewDocument): Target closed ([a0633d0](https://www.github.com/14790897/auto-read-liunxdo/commit/a0633d06237c60aa49509b5359c30e992fea6ab7))
+
+### [1.14.1](https://www.github.com/14790897/auto-read-liunxdo/compare/v1.14.0...v1.14.1) (2025-06-25)
+
+
+### Bug Fixes
+
+* 变量错误 ([a0cd8d2](https://www.github.com/14790897/auto-read-liunxdo/commit/a0cd8d2336e4ec7782e42c5e784d96b09b234415))
+* 环境变量错误 ([ca0426e](https://www.github.com/14790897/auto-read-liunxdo/commit/ca0426e1651f50d8bcf7b0a689fe833b6051fe45))
+
+## [1.14.0](https://www.github.com/14790897/auto-read-liunxdo/compare/v1.13.0...v1.14.0) (2025-06-11)
+
+
+### Features
+
+* json抓取 ([cc0bbaa](https://www.github.com/14790897/auto-read-liunxdo/commit/cc0bbaa6e24edc5cc1e80d1df81064a734b2f410))
+* mongodb ([acf7be0](https://www.github.com/14790897/auto-read-liunxdo/commit/acf7be0e65317f7237eea216fa846fe3c3c025ae))
+* mysql ([ad79373](https://www.github.com/14790897/auto-read-liunxdo/commit/ad79373b94c7f1deb28cd89fbe553b2e5dd9d1f8))
+* 修复保存逻辑 ([b36e628](https://www.github.com/14790897/auto-read-liunxdo/commit/b36e62818cf7cc497c94dbcd9177974882cb4398))
+* 多数据库 ([6a9a857](https://www.github.com/14790897/auto-read-liunxdo/commit/6a9a857ecd14cc3fd53f6b82147599a1cf3b64c1))
+
+## [1.13.0](https://www.github.com/14790897/auto-read-liunxdo/compare/v1.12.0...v1.13.0) (2025-06-05)
+
+
+### Features
+
+* 优化发送逻辑 ([6387c9e](https://www.github.com/14790897/auto-read-liunxdo/commit/6387c9e5daa0954760c6543281a207d46849cb36))
+* 保存到数据库 ([ded9f4f](https://www.github.com/14790897/auto-read-liunxdo/commit/ded9f4fe7e378854ea2d9b31521f5b0bf699f18b))
+* 去除锁，靠数据库排斥相同数据 ([2970b3a](https://www.github.com/14790897/auto-read-liunxdo/commit/2970b3a9910234ecba5ebeb69e0ce7bf12a91ef5))
+* 抓取rss内容发送到电报 ([ac66311](https://www.github.com/14790897/auto-read-liunxdo/commit/ac66311b01c231a0d0088b8672bd6fca7ed2194b))
+* 随机点赞时间 ([7630dd7](https://www.github.com/14790897/auto-read-liunxdo/commit/7630dd78ac4f101a08a03463efec486059ae8e94))
+
+
+### Bug Fixes
+
+* 之前没有添加action的其它环境变量 ([353edb3](https://www.github.com/14790897/auto-read-liunxdo/commit/353edb34fbde487642116e7bd13b0c35633d4243))
+* 先保存后查重 ([932e9e6](https://www.github.com/14790897/auto-read-liunxdo/commit/932e9e65f07742cc22930ee380dbd3d8ec5a4ea6))
+* 字符串 "false" 在 JavaScript 中是真值（truthy） ([3c0bcad](https://www.github.com/14790897/auto-read-liunxdo/commit/3c0bcadb26c9385923c536592a64421222d77fbf))
+* 存在死锁问题 ([d45d7a3](https://www.github.com/14790897/auto-read-liunxdo/commit/d45d7a3b22bb6305905c220174354320350f56ac))
+* 执行顺序 ([d0440b8](https://www.github.com/14790897/auto-read-liunxdo/commit/d0440b8242c99e959c39dfe403da228152e9bcb7))
+* 电报未渲染 ([e3bc349](https://www.github.com/14790897/auto-read-liunxdo/commit/e3bc34938805d6545abcb4d9bfab40461a1ec489))
+* 电报未渲染 ([27b40e2](https://www.github.com/14790897/auto-read-liunxdo/commit/27b40e28c36bcbb1e3fea4339dc273146ad9e536))
+
+## [1.12.0](https://www.github.com/14790897/auto-read-liunxdo/compare/v1.11.0...v1.12.0) (2025-05-31)
+
+
+### Features
+
+* random time ([42253d7](https://www.github.com/14790897/auto-read-liunxdo/commit/42253d72cd4f9f5f385a2058a34afac1b7d5d1a7))
+
+
+### Bug Fixes
+
+* add 错误 ([29106ab](https://www.github.com/14790897/auto-read-liunxdo/commit/29106ab6f76fac997f25b2533b63ffc776535b5c))
+* 文件名错误 ([e58bc8f](https://www.github.com/14790897/auto-read-liunxdo/commit/e58bc8f54ed107308c3327f6e89d21962ac8ad83))
+* 文件名错误 ([f02dcdb](https://www.github.com/14790897/auto-read-liunxdo/commit/f02dcdb9d7d60dd7b7f7bfb383b29a6e7f50e3dd))
+* 无写入权限 ([e10a452](https://www.github.com/14790897/auto-read-liunxdo/commit/e10a452297d886d6cbc1507278ee1eb9b6035fe8))
+* 未使用单引号 ([1089f3d](https://www.github.com/14790897/auto-read-liunxdo/commit/1089f3dcd2ddfb8b416fb4ada24aa42a9223269e))
+* 权限问题 ([975f842](https://www.github.com/14790897/auto-read-liunxdo/commit/975f842556341a83c3f0cfcde2633fe47f811bf4))
+* 权限问题 ([0a3890b](https://www.github.com/14790897/auto-read-liunxdo/commit/0a3890bfc079222b566ded7ee07839a74e303bb0))
+* 权限问题 ([ab0d35a](https://www.github.com/14790897/auto-read-liunxdo/commit/ab0d35ab84229146dacee3ed5bfe2ffd618882d0))
+* 权限问题 ([a2be5de](https://www.github.com/14790897/auto-read-liunxdo/commit/a2be5de1f25fff8b13b4970174bc608fa2058643))
+* 权限问题 ([9bedc0c](https://www.github.com/14790897/auto-read-liunxdo/commit/9bedc0cbe2f06b90aab2a451f2abf5daddc1aecc))
+* 权限问题 ([391f6c1](https://www.github.com/14790897/auto-read-liunxdo/commit/391f6c16fcabd4a8172128341914e0b0f490d59e))
+* 权限问题 ([367e805](https://www.github.com/14790897/auto-read-liunxdo/commit/367e805f8085422fd49a9f4d4af57f7d294a7747))
+* 权限问题 ([c046c1d](https://www.github.com/14790897/auto-read-liunxdo/commit/c046c1d47c299d0e991d3219fd3c6f68c8dd0b6a))
+* 权限问题 ([da69937](https://www.github.com/14790897/auto-read-liunxdo/commit/da69937f6b52721223c961e74e8ea238413aa331))
+* 权限问题 ([4a99c19](https://www.github.com/14790897/auto-read-liunxdo/commit/4a99c193afe05a96950ac82e61351ba845992641))
+* 权限问题 ([ee6115e](https://www.github.com/14790897/auto-read-liunxdo/commit/ee6115e240e0ee717b0b4c535961a8c74f7ef22b))
+* 权限问题 ([8aa6061](https://www.github.com/14790897/auto-read-liunxdo/commit/8aa6061d74d105cf1ca96aedf9d85186faffb22c))
+
+## [1.11.0](https://www.github.com/14790897/auto-read-liunxdo/compare/v1.10.0...v1.11.0) (2025-05-30)
+
+
+### Features
+
+* action缓存包 ([b815418](https://www.github.com/14790897/auto-read-liunxdo/commit/b815418120ec84678fb6a08480103ece8f3b920c))
+
+
+### Bug Fixes
+
+* remove apt ([9dbea4c](https://www.github.com/14790897/auto-read-liunxdo/commit/9dbea4c00cd3a78d9ba03c3ae3511858ed2da721))
+
+## [1.10.0](https://www.github.com/14790897/auto-read-liunxdo/compare/v1.9.0...v1.10.0) (2025-03-26)
+
+
+### Features
+
+* docker 端口 映射 ([83cd9f2](https://www.github.com/14790897/auto-read-liunxdo/commit/83cd9f26d8991101907c66ae774f48932ee09a67))
+* 定时清理容器的/tmp ([4265354](https://www.github.com/14790897/auto-read-liunxdo/commit/42653542540bb3ae96c77cbf701967c1e1b9941f))
+* 随机加载点赞脚本 ([1878a94](https://www.github.com/14790897/auto-read-liunxdo/commit/1878a94065dda661977919606c5a7c037cb74e58))
+
+
+### Bug Fixes
+
+* env端口错误 ([4fd5d39](https://www.github.com/14790897/auto-read-liunxdo/commit/4fd5d39404a369c9b1b9ac216d7fd06a78183be3))
+* hg ([8b7f5a0](https://www.github.com/14790897/auto-read-liunxdo/commit/8b7f5a09ec89e3bb1285974fa85fe3446e0e20fc))
+* 伪装huggingface ([a9856dc](https://www.github.com/14790897/auto-read-liunxdo/commit/a9856dce85f062ce8867def16f7acfe8937ca1d8))
+* 禁止生成core dump ([895760e](https://www.github.com/14790897/auto-read-liunxdo/commit/895760e11d493df9aa70065059e0a2f6197ca632))
+
+## [1.9.0](https://www.github.com/14790897/auto-read-liunxdo/compare/v1.8.2...v1.9.0) (2025-02-12)
+
+
+### Features
+
+* 支持禁用自动点赞 ([f6f5e26](https://www.github.com/14790897/auto-read-liunxdo/commit/f6f5e2692eb6974117f0720c0be0623105c656b4))
+
+### [1.8.2](https://www.github.com/14790897/auto-read-liunxdo/compare/v1.8.1...v1.8.2) (2025-02-12)
+
+
+### Bug Fixes
+
+* 存在无法点击登录按钮的情况,原因未知,在等待跳转前,加入按钮点击 ([1d67b5e](https://www.github.com/14790897/auto-read-liunxdo/commit/1d67b5e0fa531148ceff3c8c3f083d253a98db75))
+
+### [1.8.1](https://www.github.com/14790897/auto-read-liunxdo/compare/v1.8.0...v1.8.1) (2025-01-15)
+
+
+### Bug Fixes
+
+* 展示信息 ([27ffc94](https://www.github.com/14790897/auto-read-liunxdo/commit/27ffc94610e88df9d06e847461cddb5faff27b6b))
+
+## [1.8.0](https://www.github.com/14790897/auto-read-liunxdo/compare/v1.7.0...v1.8.0) (2025-01-14)
+
+
+### Features
+
+* 登录失败重试三次 ([2fdee4e](https://www.github.com/14790897/auto-read-liunxdo/commit/2fdee4e6f23f16ae565594a35008101596400b36))
+* 超时和密码错误逻辑分开 ([c2f61e3](https://www.github.com/14790897/auto-read-liunxdo/commit/c2f61e35f16b8fb055aa3b612c2b3c1de85194e8))
+
+
+### Bug Fixes
+
+* error ([cff54ac](https://www.github.com/14790897/auto-read-liunxdo/commit/cff54ac99fe95466b7e7b5fd2f5356193465fcec))
+* error ([a106c34](https://www.github.com/14790897/auto-read-liunxdo/commit/a106c34866588a0e401c5c3e8abe0619422e349c))
+* error ([e689db0](https://www.github.com/14790897/auto-read-liunxdo/commit/e689db064937e9527d6208f009c5f85b2a2ae1ce))
+* xvfb包 ([da5549a](https://www.github.com/14790897/auto-read-liunxdo/commit/da5549abfb71f0651ea51dc502b039c5375ef094))
+* 未使用await ([2505906](https://www.github.com/14790897/auto-read-liunxdo/commit/2505906771302de2a7f1f49abd5f7e9b75421f53))
+* 检测密码错误提示 ([22d3766](https://www.github.com/14790897/auto-read-liunxdo/commit/22d3766248481d1290b83e7e3c0eddd34def4573))
+* 登录失败throw error ([2880de3](https://www.github.com/14790897/auto-read-liunxdo/commit/2880de320a1829b6cb070ab8f1f647c2e2e35356))
+
+## [1.7.0](https://www.github.com/14790897/auto-read-liunxdo/compare/v1.6.0...v1.7.0) (2024-11-29)
+
+
+### Features
+
+* 健康探针 ([0768f30](https://www.github.com/14790897/auto-read-liunxdo/commit/0768f303e6c4a4074f3528970f5329c53d55ae07))
+* 加上首页 ([b561fde](https://www.github.com/14790897/auto-read-liunxdo/commit/b561fde351ad031f4e0e1396aa4683ea0572ab1a))
+
+
+### Bug Fixes
+
+* 尝试改进dockerfile ([533a5c9](https://www.github.com/14790897/auto-read-liunxdo/commit/533a5c9d21c35c1b3c8d2d3d2c46a0dedd070493))
+* 暴露端口问题 ([78a1aca](https://www.github.com/14790897/auto-read-liunxdo/commit/78a1aca637909f65909eadd85b45a36704646020))
+
 ## [1.6.0](https://www.github.com/14790897/auto-read-liunxdo/compare/v1.5.0...v1.6.0) (2024-10-10)
 
 
